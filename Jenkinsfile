@@ -38,7 +38,7 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://ec2-54-211-192-201.compute-1.amazonaws.com:8081')], contextPath: 'booking-app', war: '**/*.war'
+            deploy adapters: [tomcat9(credentialsId: 'pavan', path: '', url: 'http://ec2-54-211-192-201.compute-1.amazonaws.com:8081')], contextPath: 'booking-app', war: '**/*.war'
             echo "Deploy successful";
             }
         }
