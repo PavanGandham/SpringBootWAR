@@ -24,7 +24,6 @@ pipeline {
             }
             stage ('Build') {  
                 steps{
-                    sh 'mvn clean'
                     sh 'mvn package'
                     echo "build successful";
                     
@@ -39,7 +38,7 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(credentialsId: '88488dca-c16a-4bbb-8a95-abb46f153b57', path: '', url: 'http://ec2-54-211-192-201.compute-1.amazonaws.com:8081')], contextPath: 'springwar', war: '**/*.war'
+            deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://ec2-54-211-192-201.compute-1.amazonaws.com:8081')], contextPath: 'booking-app', war: '**/*.war'
             echo "Deploy successful";
             }
         }
